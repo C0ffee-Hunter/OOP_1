@@ -10,13 +10,20 @@ r = requests.get(url_json)
 
 i = 0
 while i != 5:
-    print("Название страницы: " + r.json()["query"]['search'][i]['title'])
-    title = r.json()["query"]['search'][i]['title']
+print("ns страницы: " + str(r.json()["query"]['search'][i]['ns']))
 
-    print("ID страницы: " + str(r.json()["query"]['search'][i]['pageid']))
-    page_id = r.json()["query"]['search'][i]['pageid']
+print("Название страницы: " + r.json()["query"]['search'][i]['title'])
 
-    url_page = "https://ru.wikipedia.org/w/index.php?curid=" + str(page_id)
-    print("Ссылка на статью:")
-    print(url_page + "\n")
-    i = i + 1
+page_id = r.json()["query"]['search'][i]['pageid']
+print("ID страницы: " + str(r.json()["query"]['search'][i]['pageid']))
+
+print("Размер страницы: " + str(r.json()["query"]['search'][i]['size']))
+
+print("Количество слов в странице: " + str(r.json()["query"]['search'][i]['wordcount']))
+
+print("Временная метка страницы: " + r.json()["query"]['search'][i]['timestamp'])
+
+url_page = "https://ru.wikipedia.org/w/index.php?curid=" + str(page_id)
+print("Ссылка на статью:")
+print(url_page + "\n")
+i = i + 1
